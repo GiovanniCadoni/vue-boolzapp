@@ -1,10 +1,19 @@
+const dt = luxon.DateTime;
+console.log(dt.now().toFormat("HH:mm"));
+
 const { createApp } = Vue;
 
 createApp({
     data() {
         return {
             actualIndex: 0,
-            newMessages: [],
+            newMessages: [
+                {
+                    date: "",
+                    message: "",
+                    status: "",
+                }
+            ],
             contacts: [
                 {
                     name: 'Michele',
@@ -174,8 +183,37 @@ createApp({
         changeUtent(clickedIndex) {
             this.actualIndex = clickedIndex;
         },
-        //dateChat(fullDate) {
-        //    return luxonDate = dt.fromFormat(fullDate, "dd/MM/yyyy HH:mm:ss");
-        //}
+        dateChat(fullDate) {
+            let luxonDate = dt.fromFormat(fullDate, "dd/MM/yyyy HH:mm:ss").toFormat("HH:mm");
+            return luxonDate;
+        },
+        onEnter() {
+            this.contacts[this.actualIndex].messages.push({
+                date: dt.now().toFormat("dd/MM/yyyy HH:mm:ss"),
+                message: this.newMessages.message,
+                status: "sent",
+            }),
+            this.newMessages.message = "",
+            setTimeout(() => {
+                this.contacts[this.actualIndex].messages.push({
+                    date: dt.now().toFormat("dd/MM/yyyy HH:mm:ss"),
+                    message: "Va bene",
+                    status: "received",
+                });
+            }, 1000);
+        },
+        searchName() {
+            console.log("Funziona");
+            console.log(this.searchText);
+            let search = this.searchText.toLowerCase();
+            this.contacts.forEach(contact => {
+                console.log(contact.name.toLowerCase());
+                if(contact.name.toLowerCase().includes(search)) {
+                    contact.visible = true;
+                } else {
+                    contact.visible = false;
+                }
+            })
+        },
     },
 }).mount("#app");

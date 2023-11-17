@@ -60,15 +60,14 @@
                     <nav class="navigation-sx">
                         <div class="container-navigation-sx">
                             <i class="action fa-solid fa-magnifying-glass"></i>
-                            <input class="search-navigation-sx" type="search" name="Search-bar"
-                                placeholder="Cerca o inizia una nuova chat">
+                            <input class="search-navigation-sx" type="search" name="Search-bar" placeholder="Cerca o inizia una nuova chat" @keyup="searchName()" v-model="searchText">
                         </div>
                     </nav>
                     <!--/Navigation Sx-->
 
                     <!--Main Sx-->
                     <main class="main-sx">
-                        <div class="chat-sx action" v-for="(utent, index) in contacts" :key="index" @click="changeUtent(index)" :class="index === actualIndex ? 'active' : ''">
+                        <div class="chat-sx action" v-for="(utent, index) in contacts" :key="index" @click="changeUtent(index)" :class="index === actualIndex ? 'active' : ''" v-show="utent.visible">
                             <div class="img-chat-sx">
                                 <img class="img-profile" :src="`img/avatar${utent.avatar}.jpg`" alt="`avatar${utent.avatar}`">
                             </div>
@@ -141,10 +140,11 @@
                                         Cancella messaggio
                                     </div>
                                 </div>
+                                <div class="hour-chat-dx">
+                                    {{ dateChat(mex.date) }}
+                                </div>
                             </div>
-                            <div class="hour-chat-dx">
-                                {{ mex.date }}
-                            </div>
+                            
                         </div>
                         <!-- <div class="mex-send">
                             <div class="text-mex">
@@ -207,7 +207,7 @@
                             <i class="action fa-regular fa-face-smile"></i>
                         </div>
                         <div class="text-dx">
-                            <input type="text" name="text-bar" placeholder="Scrivi un messaggio" v-model="newMessages">
+                            <input type="text" name="text-bar" placeholder="Scrivi un messaggio" v-model="newMessages.message" v-on:keyup.enter="onEnter()">
                         </div>
                         <div class="mic-dx action">
                             <i class="action fa-solid fa-microphone"></i>
