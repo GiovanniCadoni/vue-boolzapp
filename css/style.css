@@ -385,7 +385,7 @@ body{
     gap: 1.5rem;
 }
 
-.mex-send{
+.sent{
     align-self: flex-end;
     width: 60%;
     background-color: var(--lightgreen);
@@ -440,7 +440,7 @@ body{
     margin-bottom: 15px;
 }
 
-.mex-received{
+.received{
     width: 60%;
     background-color: white;
     padding: 15px 15px;
@@ -522,4 +522,8 @@ body{
 
 .hide{
     display: none;
+}
+
+.active{
+    background-color: var(--lightgrey);
 }

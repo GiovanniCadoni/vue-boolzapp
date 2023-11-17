@@ -68,7 +68,7 @@
 
                     <!--Main Sx-->
                     <main class="main-sx">
-                        <div class="chat-sx action" v-for="(utent, index) in contacts" :key="index">
+                        <div class="chat-sx action" v-for="(utent, index) in contacts" :key="index" @click="changeUtent(index)" :class="index === actualIndex ? 'active' : ''">
                             <div class="img-chat-sx">
                                 <img class="img-profile" :src="`img/avatar${utent.avatar}.jpg`" alt="`avatar${utent.avatar}`">
                             </div>
@@ -124,10 +124,8 @@
 
                     <!--Main Dx-->
                     <main class="main-dx">
-                        <div class="text-mex" v-for="(mex, index) in contacts[actualIndex].messages">
-                            <div class="[mex.status === 'sent' ? mex-send : mex-received]">
-                                {{ mex.message }}
-                            </div>
+                        <div class="text-mex" :class="mex.status" v-for="(mex, index) in contacts[actualIndex].messages">
+                            {{ mex.message }}
                             <div class="action options-chat">
                                 <div class="chevron-down">
                                     <i class="fa-solid fa-chevron-down"></i>
@@ -209,7 +207,7 @@
                             <i class="action fa-regular fa-face-smile"></i>
                         </div>
                         <div class="text-dx">
-                            <input type="text" name="text-bar" placeholder="Scrivi un messaggio">
+                            <input type="text" name="text-bar" placeholder="Scrivi un messaggio" v-model="newMessages">
                         </div>
                         <div class="mic-dx action">
                             <i class="action fa-solid fa-microphone"></i>
@@ -223,6 +221,7 @@
 
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.4.4/luxon.min.js" integrity="sha512-dUlSLLkxslGILhPdCkALwk4szPhp3xmZIKFtlUD+O9Lslq41Aksmdt5OGqpomDoT4FsCUH70jQU8ezZHI3v1RQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./js/script.js"></script>
 </body>
 

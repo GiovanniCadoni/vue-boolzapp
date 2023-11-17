@@ -4,6 +4,7 @@ createApp({
     data() {
         return {
             actualIndex: 0,
+            newMessages: [],
             contacts: [
                 {
                     name: 'Michele',
@@ -169,7 +170,12 @@ createApp({
             ],
         };
     },
-    methods() {
-
+    methods: {
+        changeUtent(clickedIndex) {
+            this.actualIndex = clickedIndex;
+        },
+        //dateChat(fullDate) {
+        //    return luxonDate = dt.fromFormat(fullDate, "dd/MM/yyyy HH:mm:ss");
+        //}
     },
 }).mount("#app");
