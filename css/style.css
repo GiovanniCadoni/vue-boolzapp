@@ -519,3 +519,7 @@ body{
 }
 /*/Footer Dx*/
 /*/COLONNA DESTRA*/
+
+.hide{
+    display: none;
+}

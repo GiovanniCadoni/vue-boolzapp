@@ -1,104 +1,107 @@
 <!DOCTYPE html>
 <html lang="it">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Boolzapp</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-            rel="stylesheet">
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <link rel="stylesheet" href="./css/style.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzapp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
 
-    <body>
-        <div id="app">
+<body>
+    <div id="app">
 
-            <div class="container-background">
-                <div class="container-web-app">
-                    <!--Colonna sinistra-->
-                    <div class="column-sx">
-                        <!--Header Sx-->
-                        <header class="header-sx">
-                            <div class="profile-header-sx action">
-                                <img class="img-my-profile" src="./img/avatar_io.jpg" alt="avatar-io">
-                            </div>
-                            <div class="options-header-sx">
-                                <span class="action">
-                                    <i class="fa-solid fa-circle-notch"></i>
-                                </span>
-                                <span class="action">
-                                    <i class="fa-solid fa-message"></i>
-                                </span>
-                                <span class="action" id="more-big">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </span>
-                            </div>
-                        </header>
-                        <!--/Header Sx-->
+        <div class="container-background">
+            <div class="container-web-app">
+                <!--Colonna sinistra-->
+                <div class="column-sx">
+                    <!--Header Sx-->
+                    <header class="header-sx">
+                        <div class="profile-header-sx action">
+                            <img class="img-my-profile" src="./img/avatar_io.jpg" alt="avatar-io">
+                        </div>
+                        <div class="options-header-sx">
+                            <span class="action">
+                                <i class="fa-solid fa-circle-notch"></i>
+                            </span>
+                            <span class="action">
+                                <i class="fa-solid fa-message"></i>
+                            </span>
+                            <span class="action" id="more-big">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </span>
+                        </div>
+                    </header>
+                    <!--/Header Sx-->
 
-                        <!--Hero Sx-->
-                        <div class="hero-sx">
-                            <div class="alarm-hero-sx">
-                                <i class="fa-solid fa-bell-slash"></i>
+                    <!--Hero Sx-->
+                    <div class="hero-sx">
+                        <div class="alarm-hero-sx">
+                            <i class="fa-solid fa-bell-slash"></i>
+                        </div>
+                        <div class="content-hero-sx">
+                            <div class="text-hero-sx">
+                                Ricevi notifiche di nuovi messaggi
                             </div>
-                            <div class="content-hero-sx">
-                                <div class="text-hero-sx">
-                                    Ricevi notifiche di nuovi messaggi
+                            <a class="link-hero-sx" href="">Attiva notifiche desktop</a>
+                        </div>
+                    </div>
+                    <!--/Hero Sx-->
+
+                    <!--Navigation Sx-->
+                    <nav class="navigation-sx">
+                        <div class="container-navigation-sx">
+                            <i class="action fa-solid fa-magnifying-glass"></i>
+                            <input class="search-navigation-sx" type="search" name="Search-bar"
+                                placeholder="Cerca o inizia una nuova chat">
+                        </div>
+                    </nav>
+                    <!--/Navigation Sx-->
+
+                    <!--Main Sx-->
+                    <main class="main-sx">
+                        <div class="chat-sx action" v-for="(utent, index) in contacts" :key="index">
+                            <div class="img-chat-sx">
+                                <img class="img-profile" :src="`img/avatar${utent.avatar}.jpg`" alt="`avatar${utent.avatar}`">
+                            </div>
+                            <div class="content-chat-sx">
+                                <div class="name-chat">
+                                    {{ utent.name }}
                                 </div>
-                                <a class="link-hero-sx" href="">Attiva notifiche desktop</a>
+                                <div class="text-chat">
+                                    Lorem ipsum dolor sit amet
+                                </div>
+                            </div>
+                            <div class="hour-chat-sx">
+                                16:15
                             </div>
                         </div>
-                        <!--/Hero Sx-->
+                    </main>
+                    <!--/Main Sx-->
+                </div>
+                <!--/Colonna sinistra-->
 
-                        <!--Navigation Sx-->
-                        <nav class="navigation-sx">
-                            <div class="container-navigation-sx">
-                                <i class="action fa-solid fa-magnifying-glass"></i>
-                                <input class="search-navigation-sx" type="search" name="Search-bar" placeholder="Cerca o inizia una nuova chat">
-                            </div>
-                        </nav>
-                        <!--/Navigation Sx-->
+                <!--Colonna destra-->
+                <div class="column-dx">
 
-                        <!--Main Sx-->
-                        <main class="main-sx">
-                            <div class="chat-sx action" v-for="(utent, index) in contacts" :key="index">
-                                <div class="img-chat-sx">
-                                    <img class="img-profile" :src="`img/avatar${utent.avatar}.jpg`" alt="avatar-1">
-                                </div>
-                                <div class="content-chat-sx">
-                                    <div class="name-chat">
-                                        {{ utent.name }}
-                                    </div>
-                                    <div class="text-chat">
-                                        Lorem ipsum dolor sit amet
-                                    </div>
-                                </div>
-                                <div class="hour-chat-sx">
-                                    16:15
-                                </div>
-                            </div>
-                        </main>
-                        <!--/Main Sx-->
-                    </div>
-                    <!--/Colonna sinistra-->
+                    <!--Header Dx-->
+                    <header class="header-dx">
 
-                    <!--Colonna destra-->
-                    <div class="column-dx">
-                        <!--Header Dx-->
-                        <header class="header-dx">
                             <div class="chat-dx">
                                 <div class="action profile-dx">
-                                    <img src="./img/avatar_1.jpg" alt="avatar-1">
+                                    <img :src="`img/avatar${contacts[actualIndex].avatar}.jpg`" alt="`avatar${contacts[actualIndex].avatar}`">
                                 </div>
                                 <div class="action info-chat-dx">
                                     <div class="name-dx">
-                                        Michele
+                                        {{ contacts[actualIndex].name }}
                                     </div>
                                     <div class="last-on-dx">
                                         Ultimo accesso oggi alle 16:26
@@ -116,83 +119,111 @@
                                     <i class="action fa-solid fa-ellipsis-vertical"></i>
                                 </span>
                             </div>
-                        </header>
-                        <!--/Header Dx-->
+                    </header>
+                    <!--/Header Dx-->
 
-                        <!--Main Dx-->
-                        <main class="main-dx">
-                            <div class="mex-send">
-                                <div class="text-mex">
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate totam quibusdam error placeat in nesciunt, ea nostrum? Optio reprehenderit nemo eius dignissimos quibusdam ducimus neque ipsam consectetur. Ab, beatae earum.
-                                    <div class="action options-chat">
-                                        <div class="chevron-down">
-                                            <i class="fa-solid fa-chevron-down"></i>
+                    <!--Main Dx-->
+                    <main class="main-dx">
+                        <div class="text-mex" v-for="(mex, index) in contacts[actualIndex].messages">
+                            <div class="[mex.status === 'sent' ? mex-send : mex-received]">
+                                {{ mex.message }}
+                            </div>
+                            <div class="action options-chat">
+                                <div class="chevron-down">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                <div class="chevron-up">
+                                    <i class="fa-solid fa-chevron-up"></i>
+                                </div>
+                                <div class="actions-chat">
+                                    <div class="margin-bottom">
+                                        Info messaggio
+                                    </div>
+                                    <div>
+                                        Cancella messaggio
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hour-chat-dx">
+                                {{ mex.date }}
+                            </div>
+                        </div>
+                        <!-- <div class="mex-send">
+                            <div class="text-mex">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate totam quibusdam
+                                error placeat in nesciunt, ea nostrum? Optio reprehenderit nemo eius dignissimos
+                                quibusdam ducimus neque ipsam consectetur. Ab, beatae earum.
+                                <div class="action options-chat">
+                                    <div class="chevron-down">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </div>
+                                    <div class="chevron-up">
+                                        <i class="fa-solid fa-chevron-up"></i>
+                                    </div>
+                                    <div class="actions-chat">
+                                        <div class="margin-bottom">
+                                            Info messaggio
                                         </div>
-                                        <div class="chevron-up">
-                                            <i class="fa-solid fa-chevron-up"></i>
-                                        </div>
-                                        <div class="actions-chat">
-                                            <div class="margin-bottom">
-                                                Info messaggio
-                                            </div>
-                                            <div>
-                                                Cancella messaggio
-                                            </div>
+                                        <div>
+                                            Cancella messaggio
                                         </div>
                                     </div>
                                 </div>
-                                <div class="hour-chat-dx">
-                                    16:13
-                                </div>
                             </div>
-                            <div class="mex-received">
-                                <div class="text-mex">
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate totam quibusdam error placeat in nesciunt, ea nostrum? Optio reprehenderit nemo eius dignissimos quibusdam ducimus neque ipsam consectetur. Ab, beatae earum.
-                                    <div class="action options-chat">
-                                        <div class="chevron-down">
-                                            <i class="fa-solid fa-chevron-down"></i>
+                            <div class="hour-chat-dx">
+                                16:13
+                            </div>
+                        </div> -->
+                        <!-- <div class="mex-received">
+                            <div class="text-mex">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate totam quibusdam
+                                error placeat in nesciunt, ea nostrum? Optio reprehenderit nemo eius dignissimos
+                                quibusdam ducimus neque ipsam consectetur. Ab, beatae earum.
+                                <div class="action options-chat">
+                                    <div class="chevron-down">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </div>
+                                    <div class="chevron-up">
+                                        <i class="fa-solid fa-chevron-up"></i>
+                                    </div>
+                                    <div class="actions-chat">
+                                        <div class="margin-bottom">
+                                            Info messaggio
                                         </div>
-                                        <div class="chevron-up">
-                                            <i class="fa-solid fa-chevron-up"></i>
-                                        </div>
-                                        <div class="actions-chat">
-                                            <div class="margin-bottom">
-                                                Info messaggio
-                                            </div>
-                                            <div>
-                                                Cancella messaggio
-                                            </div>
+                                        <div>
+                                            Cancella messaggio
                                         </div>
                                     </div>
                                 </div>
-                                <div class="hour-chat-dx">
-                                    16:15
-                                </div>
                             </div>
-                        </main>
-                        <!--/Main Dx-->
+                            <div class="hour-chat-dx">
+                                16:15
+                            </div>
+                        </div> -->
+                    </main>
+                    <!--/Main Dx-->
 
-                        <!--Footer Dx-->
-                        <footer class="footer-dx">
-                            <div class="emoticon-dx action">
-                                <i class="action fa-regular fa-face-smile"></i>
-                            </div>
-                            <div class="text-dx">
-                                <input type="text" name="text-bar" placeholder="Scrivi un messaggio">
-                            </div>
-                            <div class="mic-dx action">
-                                <i class="action fa-solid fa-microphone"></i>
-                            </div>
-                        </footer>
-                        <!--/Footer Dx-->
-                    </div>
-                    <!--/Colonna destra-->
+                    <!--Footer Dx-->
+                    <footer class="footer-dx">
+                        <div class="emoticon-dx action">
+                            <i class="action fa-regular fa-face-smile"></i>
+                        </div>
+                        <div class="text-dx">
+                            <input type="text" name="text-bar" placeholder="Scrivi un messaggio">
+                        </div>
+                        <div class="mic-dx action">
+                            <i class="action fa-solid fa-microphone"></i>
+                        </div>
+                    </footer>
+                    <!--/Footer Dx-->
                 </div>
+                <!--/Colonna destra-->
             </div>
-
         </div>
 
-        <script src="./js/script.js"></script>
-    </body>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
 
 </html>
